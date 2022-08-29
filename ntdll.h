@@ -136,6 +136,12 @@ typedef enum _SECTION_INHERIT
 
 #define HARDERROR_OVERRIDE_ERRORMODE        0x10000000
 
+typedef enum _SHUTDOWN_ACTION {
+    ShutdownNoReboot,
+    ShutdownReboot,
+    ShutdownPowerOff
+} SHUTDOWN_ACTION, *PSHUTDOWN_ACTION;
+
 typedef enum _HARDERROR_RESPONSE_OPTION
 {
     OptionAbortRetryIgnore,
@@ -3973,6 +3979,22 @@ NtCreateProcess(
     _In_opt_ HANDLE DebugPort,
     _In_opt_ HANDLE ExceptionPort
 );
+
+NTSYSAPI 
+NTSTATUS
+NTAPI
+NtShutdownSystem(
+    _In_ SHUTDOWN_ACTION Action
+);
+
+NTSYSAPI 
+NTSTATUS
+NTAPI
+NtSetSystemPowerState(
+    _In_ POWER_ACTION Action,
+    _In_ SYSTEM_POWER_STATE Power_State,
+    _In_ ULONG Flags
+    );
 
 NTSYSCALLAPI
 NTSTATUS
