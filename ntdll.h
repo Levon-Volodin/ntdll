@@ -3987,7 +3987,14 @@ NtShutdownSystem(
     _In_ SHUTDOWN_ACTION Action
 );
 
-
+NTSYSAPI 
+NTSTATUS
+NTAPI
+NtSetSystemPowerState(
+    _In_ POWER_ACTION Action,
+    _In_ SYSTEM_POWER_STATE Power_State,
+    _In_ ULONG Flags
+    );
 
 NTSYSCALLAPI
 NTSTATUS
